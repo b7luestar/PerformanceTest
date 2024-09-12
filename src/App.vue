@@ -1,20 +1,27 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import Timer from './components/Timer.vue'
+import EventHandler from './components/EventHandler.vue';
 
 import { ref } from 'vue';
-const toggle = ref(false);
+const toggleTimer = ref(false);
 
 const toggleTimerComponent = () => {
-  toggle.value = !toggle.value;
+  toggleTimer.value = !toggleTimer.value;
 }
 
+const toggleEventhandler = ref(false);
+const toggleEventHandlerComponent = () => {
+  toggleEventhandler.value = !toggleEventhandler.value;
+}
 </script>
 
 <template>
-  <div>
-    <div class="btn btn-primary" @click="toggleTimerComponent">{{ toggle? "Delete": "Create" }} Timer component</div>
+  <div class="d-flex flex-column">
+    <div class="btn btn-primary" @click="toggleTimerComponent">{{ toggleTimer? "Delete": "Create" }} Timer component</div>
+    <div class="btn btn-primary mt-2" @click="toggleEventHandlerComponent">{{ toggleEventhandler? "Delete": "Create" }} Event Handler component</div>
   </div>
-  <HelloWorld v-if="toggle"/>
+  <Timer v-if="toggleTimer"/>
+  <EventHandler v-if="toggleEventhandler"/>
 </template>
 
 <style scoped>
